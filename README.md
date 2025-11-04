@@ -1,78 +1,81 @@
-# ELECE BARBER - Premium Barbershop Website
+# ELECE BARBER - Sitio Web Premium de Barbería
 
-A modern, professional website for ELECE Barber, a premium barbershop located in Albuixech, Valencia, Spain.
+Sitio web moderno y profesional para ELECE Barber, una barbería premium ubicada en Albuixech, Valencia, España.
 
-## 🌟 Features
+## 🌟 Características
 
-- **Modern Design**: Clean, professional design with premium barbershop aesthetics
-- **Responsive Layout**: Mobile-first approach with full responsive design
-- **Online Booking Integration**: Direct integration with Booksy booking system
-- **Services Showcase**: Detailed presentation of all barbershop services
-- **Interactive Gallery**: Professional photo gallery with lightbox functionality
-- **Customer Reviews**: Testimonials section to build trust
-- **Contact Information**: Complete contact details and location
-- **Smooth Animations**: Modern UI/UX with smooth scroll and hover effects
-- **SEO Optimized**: Semantic HTML and meta tags for search engine optimization
+- **Diseño Moderno**: Diseño limpio y profesional con estética premium de barbería
+- **Diseño Responsive**: Enfoque mobile-first con diseño completamente adaptable
+- **Integración de Reservas Online**: Integración directa con sistema de reservas Booksy
+- **Escaparate de Servicios**: Presentación detallada de todos los servicios de barbería
+- **Galería Interactiva**: Galería de fotos profesionales integrada con Instagram
+- **Reseñas de Clientes**: Carrusel de testimonios de Booksy para generar confianza
+- **Información de Contacto**: Detalles completos de contacto y ubicación
+- **Animaciones Suaves**: UI/UX moderna con scroll suave y efectos hover
+- **Optimizado para SEO**: HTML semántico y meta tags para optimización en buscadores
 
-## 🚀 Services Offered
+## 🚀 Servicios Ofrecidos
 
-- **Corte de Pelo** - Modern and classic haircuts adapted to personal style
-- **Arreglo de Barba** - Professional beard trimming and styling
-- **Lavado de Cabello** - Complete hair washing treatment with premium products
-- **Depilación de Cejas** - Professional eyebrow shaping
+- **Corte caballero** - 13€
+- **Recorte de barba** - 6€
+- **Corte y barba** - 16€
+- **Corte y lavado** - 15€
 
-## 🛠️ Technologies Used
+## 🛠️ Tecnologías Utilizadas
 
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Modern styling with flexbox, grid, and animations
-- **JavaScript**: Interactive functionality and smooth user experience
-- **Font Awesome**: Professional icons
-- **Google Fonts**: Playfair Display and Inter font families
-- **Responsive Design**: Mobile-first approach
+- **HTML5**: Marcado semántico con características de accesibilidad
+- **CSS3**: Estilos modernos con flexbox, grid y animaciones
+- **JavaScript**: Funcionalidad interactiva y experiencia de usuario fluida
+- **Font Awesome**: Iconos profesionales
+- **Google Fonts**: Familias tipográficas Playfair Display e Inter
+- **Diseño Responsive**: Enfoque mobile-first
 
-## 📁 Project Structure
+## 📁 Estructura del Proyecto
 
 ```
 ELECE-BARBER/
-├── index.html              # Main HTML file
+├── index.html              # Archivo HTML principal
 ├── css/
-│   └── styles.css          # All CSS styles and responsive design
+│   └── styles.css          # Todos los estilos CSS y diseño responsive
 ├── js/
-│   └── script.js           # JavaScript functionality
+│   └── script.js           # Funcionalidad JavaScript
+├── images/
+│   └── elece-logo.png      # Logo de ELECE Barber
 ├── .github/
-│   └── copilot-instructions.md  # Project context for development
-└── README.md               # Project documentation
+│   └── copilot-instructions.md  # Contexto del proyecto para desarrollo
+├── INSTAGRAM-INTEGRATION.md     # Documentación de integración con Instagram
+└── README.md               # Documentación del proyecto
 ```
 
-## 🚀 Getting Started
+## 🚀 Cómo Empezar
 
-### Prerequisites
-- A modern web browser
-- VS Code (recommended) or any text editor
-- Live Server extension for VS Code (optional, for development)
+### Requisitos Previos
+- Un navegador web moderno
+- VS Code (recomendado) o cualquier editor de texto
+- Extensión Live Server para VS Code (opcional, para desarrollo)
 
-### Installation
+### Instalación
 
-1. **Clone or download the project**
+1. **Clonar o descargar el proyecto**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/MutenRos/elece-barber.git
    cd elece-barber
    ```
 
-2. **Open in VS Code**
+2. **Abrir en VS Code**
    ```bash
    code .
    ```
 
-3. **Run with Live Server**
-   - Install the "Live Server" extension in VS Code
-   - Right-click on `index.html`
-   - Select "Open with Live Server"
-   - The website will open at `http://localhost:5500`
+3. **Ejecutar con Live Server**
+   - Instala la extensión "Live Server" en VS Code
+   - Haz clic derecho en `index.html`
+   - Selecciona "Open with Live Server"
+   - El sitio web se abrirá en `http://localhost:5500`
 
-### Alternative: Simple HTTP Server
+### Alternativa: Servidor HTTP Simple
 
-If you have Python installed:
+Si tienes Python instalado:
 ```bash
 # Python 3
 python -m http.server 8000
@@ -81,92 +84,94 @@ python -m http.server 8000
 python -m SimpleHTTPServer 8000
 ```
 
-Then open `http://localhost:8000` in your browser.
+Luego abre `http://localhost:8000` en tu navegador.
 
-## 🎨 Customization
+## 🎨 Personalización
 
-### Colors
-The website uses a professional color scheme defined in CSS custom properties:
-- Primary: `#2c1810` (Dark brown)
-- Secondary: `#8b6914` (Golden brown)
-- Accent: `#c8960d` (Gold)
+### Colores
+El sitio web utiliza un esquema de colores profesional en blanco y negro:
+- Blanco: `#ffffff`
+- Negro: `#000000`
+- Gris oscuro: `#1a1a1a`
+- Gris claro: `#f5f5f5`
 
-### Fonts
-- Headers: 'Playfair Display' (serif)
-- Body text: 'Inter' (sans-serif)
+### Tipografías
+- Encabezados: 'Playfair Display' (serif)
+- Texto del cuerpo: 'Inter' (sans-serif)
 
-### Images
-Currently using placeholder images. Replace with actual photos:
-- Hero section video/image
-- Gallery images (6 professional barbershop photos)
-- About section image (barbershop interior)
-- Map (Google Maps embed or custom map)
+### Integración con Instagram
+La galería se conecta automáticamente con el feed de Instagram @elecebarber_. Para actualizar las fotos, simplemente sube nuevas publicaciones a Instagram.
 
-## 📱 Responsive Breakpoints
+## 📱 Breakpoints Responsive
 
-- Mobile: 480px and below
-- Tablet: 768px and below
-- Desktop: 769px and above
+- Móvil: 480px e inferior
+- Tablet: 768px e inferior  
+- Desktop: 769px y superior
 
-## 🔧 Development
+## 🔧 Desarrollo
 
-### File Organization
-- Keep all CSS in `css/styles.css`
-- Keep all JavaScript in `js/script.js`
-- Add new images to an `images/` folder (to be created)
+### Organización de Archivos
+- Mantén todo el CSS en `css/styles.css`
+- Mantén todo el JavaScript en `js/script.js`
+- Agrega nuevas imágenes a la carpeta `images/`
 
-### Performance Optimization
-- Images should be optimized (WebP format recommended)
-- CSS and JavaScript are already minification-ready
-- Fonts are loaded asynchronously
+### Optimización de Rendimiento
+- Las imágenes deben estar optimizadas (formato WebP recomendado)
+- CSS y JavaScript están listos para minificación
+- Las fuentes se cargan de forma asíncrona
 
-## 🌐 Browser Support
+## 🌐 Compatibilidad de Navegadores
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Internet Explorer 11+ (with graceful degradation)
+- Chrome (última versión)
+- Firefox (última versión)
+- Safari (última versión)
+- Edge (última versión)
+- Internet Explorer 11+ (con degradación elegante)
 
-## 📞 Business Information
+## 📞 Información del Negocio
 
 **ELECE BARBER**
-- Location: Albuixech, Valencia, Spain
-- Services: Professional barbershop services
-- Booking: https://booksy.com/es-es/115570_elece-barber_barberia_57381_albuixech
+- Ubicación: Albuixech, Valencia, España
+- Dirección: C/ Miguel Hernández, 23, 46110 Albuixech, Valencia
+- Horario: 
+  - Lunes: Cerrado
+  - Martes-Viernes: 09:30 - 13:00, 16:00 - 20:00
+  - Sábado: 09:00 - 14:00
+  - Domingo: Cerrado
+- Instagram: [@elecebarber_](https://instagram.com/elecebarber_)
+- Reservas: [Booksy](https://booksy.com/es-es/115570_elece-barber_barberia_57381_albuixech)
 
-## 🔮 Future Enhancements
+## 🔮 Mejoras Futuras
 
-- [ ] Add actual photos and videos
-- [ ] Implement Google Maps integration
-- [ ] Add social media feeds
-- [ ] Implement contact form with backend
-- [ ] Add multi-language support (Valencian/Catalan)
-- [ ] PWA (Progressive Web App) capabilities
-- [ ] Performance analytics integration
+- [ ] Añadir más fotos y videos profesionales
+- [ ] Implementar formulario de contacto con backend
+- [ ] Añadir soporte multi-idioma (Valenciano/Catalán)
+- [ ] Capacidades PWA (Progressive Web App)
+- [ ] Integración de analytics de rendimiento
+- [ ] Sistema de valoraciones en tiempo real
 
-## 📄 License
+## 📄 Licencia
 
-This project is created for ELECE BARBER. All rights reserved.
+Este proyecto fue creado para ELECE BARBER. Todos los derechos reservados.
 
-## 👨‍💻 Development Notes
+## 👨‍💻 Notas de Desarrollo
 
-- The website is designed to be easily maintainable
-- All external dependencies are loaded via CDN
-- Code is well-commented for easy understanding
-- Responsive design follows mobile-first principles
-- Accessibility features are built-in (semantic HTML, proper contrast ratios)
+- El sitio web está diseñado para ser fácilmente mantenible
+- Todas las dependencias externas se cargan vía CDN
+- El código está bien comentado para fácil comprensión
+- El diseño responsive sigue principios mobile-first
+- Características de accesibilidad integradas (HTML semántico, ratios de contraste apropiados)
 
-## 🚀 Deployment
+## 🚀 Despliegue
 
-The website can be deployed to any static hosting service:
+El sitio web puede ser desplegado en cualquier servicio de hosting estático:
 - GitHub Pages
 - Netlify
 - Vercel
-- Traditional web hosting
+- Hosting web tradicional
 
-Simply upload all files to the web server root directory.
+Simplemente sube todos los archivos al directorio raíz del servidor web.
 
 ---
 
-**Created with ❤️ for ELECE BARBER - Professional Barbershop in Albuixech, Valencia**
+**Creado con ❤️ para ELECE BARBER - Barbería Profesional en Albuixech, Valencia**
