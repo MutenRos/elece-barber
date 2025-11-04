@@ -2,31 +2,6 @@
 
 Sitio web moderno y profesional para ELECE Barber, una barbería premium ubicada en Albuixech, Valencia, España.
 
-## 📁 Estructura del Proyecto
-
-Este proyecto contiene **dos versiones optimizadas**:
-
-### 🖥️ [Browser Version](./browser-version/) - Versión de Escritorio
-Versión AAAA completa con todas las características premium:
-- Animaciones avanzadas y efectos parallax
-- PWA con Service Worker
-- SEO avanzado con Schema.org
-- Accesibilidad WCAG 2.1 AAA
-- Meta tags completos (Open Graph, Twitter Cards)
-- Scroll reveal animations
-- Performance optimizado
-
-### 📱 [Mobile Version](./mobile-version/) - Versión Móvil
-Versión optimizada específicamente para dispositivos móviles:
-- Diseño mobile-first
-- Navegación drawer lateral
-- Gestos táctiles (swipe, tap)
-- Botones grandes optimizados para touch
-- Bottom CTA fijo
-- Carrusel de reseñas con swipe
-- Quick actions accesibles
-- Performance ultra-rápido
-
 ## 🌟 Características
 
 - **Diseño Moderno**: Diseño limpio y profesional con estética premium de barbería
