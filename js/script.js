@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Loading animations
     initLoadingAnimations();
+    
+    // Back to top button
+    initBackToTop();
+    
+    // Advanced interactions
+    initAdvancedInteractions();
 });
 
 // Mobile Menu Functionality
@@ -128,29 +134,91 @@ function initNavbarScrollEffect() {
     });
 }
 
-// Scroll Animations
+// Advanced Scroll Animations with Intersection Observer
 function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.service-card, .gallery-item, .review-card, .contact-item');
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const animatedElements = document.querySelectorAll('.service-card, .review-card, .contact-item, .about-content, .about-image');
     
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // Add stagger delay for better visual effect
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 100);
+                
+                // Unobserve after animation to improve performance
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    // Observe reveal elements
+    revealElements.forEach(element => {
         observer.observe(element);
+    });
+    
+    // Add reveal classes to animated elements
+    animatedElements.forEach((element, index) => {
+        if (!element.classList.contains('reveal') && 
+            !element.classList.contains('reveal-left') && 
+            !element.classList.contains('reveal-right') &&
+            !element.classList.contains('reveal-scale')) {
+            
+            // Alternate animation directions for visual interest
+            if (index % 3 === 0) {
+                element.classList.add('reveal-left');
+            } else if (index % 3 === 1) {
+                element.classList.add('reveal-right');
+            } else {
+                element.classList.add('reveal-scale');
+            }
+            
+            observer.observe(element);
+        }
+    });
+    
+    // Parallax effect for hero section
+    initParallaxEffect();
+    
+    // Add scroll progress indicator
+    initScrollProgress();
+}
+
+// Parallax Effect
+function initParallaxEffect() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        
+        if (scrolled < window.innerHeight) {
+            hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+        }
+    });
+}
+
+// Scroll Progress Indicator
+function initScrollProgress() {
+    // Create progress bar element
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.innerHTML = '<div class="scroll-progress-bar"></div>';
+    document.body.appendChild(progressBar);
+    
+    // Update progress on scroll
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.pageYOffset / windowHeight) * 100;
+        document.querySelector('.scroll-progress-bar').style.width = scrolled + '%';
     });
 }
 
@@ -651,6 +719,97 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('error', function(e) {
     console.log('An error occurred:', e.error);
 });
+
+// Back to Top Button
+function initBackToTop() {
+    const backToTop = document.getElementById('backToTop');
+    
+    if (!backToTop) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+    
+    // Scroll to top on click
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Advanced Interactions
+function initAdvancedInteractions() {
+    // Add hover lift effect to cards
+    const cards = document.querySelectorAll('.service-card, .review-card');
+    cards.forEach(card => {
+        card.classList.add('hover-lift');
+    });
+    
+    // Add glow effect to buttons
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    buttons.forEach(btn => {
+        btn.classList.add('hover-glow');
+    });
+    
+    // Smooth number counting animation
+    initNumberCounting();
+    
+    // Add typing effect to hero subtitle if exists
+    const heroSubtitle = document.querySelector('.hero p');
+    if (heroSubtitle) {
+        addTypingCursor(heroSubtitle);
+    }
+}
+
+// Number Counting Animation
+function initNumberCounting() {
+    const stats = document.querySelectorAll('[data-count]');
+    
+    const observerOptions = {
+        threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const targetNumber = parseInt(target.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = targetNumber / (duration / 16);
+                let current = 0;
+                
+                const updateCount = () => {
+                    current += increment;
+                    if (current < targetNumber) {
+                        target.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        target.textContent = targetNumber;
+                    }
+                };
+                
+                updateCount();
+                observer.unobserve(target);
+            }
+        });
+    }, observerOptions);
+    
+    stats.forEach(stat => observer.observe(stat));
+}
+
+// Add typing cursor effect
+function addTypingCursor(element) {
+    element.style.borderRight = '2px solid white';
+    element.style.paddingRight = '5px';
+    element.style.animation = 'blink 1s infinite';
+}
 
 // Service Worker Registration (for PWA capabilities)
 if ('serviceWorker' in navigator) {
