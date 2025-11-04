@@ -258,13 +258,56 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Handle iOS Safari address bar hide/show
+let resizeTimer;
 window.addEventListener('resize', () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    // Debounce resize events
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        
+        // Recalculate carousel positions
+        const carousel = document.getElementById('reviewsCarousel');
+        if (carousel) {
+            const scrollLeft = carousel.scrollLeft;
+            const cardWidth = carousel.querySelector('.review-card')?.offsetWidth || 0;
+            if (cardWidth > 0) {
+                const activeIndex = Math.round(scrollLeft / (cardWidth + 20));
+                carousel.scrollLeft = activeIndex * (cardWidth + 20);
+            }
+        }
+    }, 250);
 });
 
 // Initial call
 window.dispatchEvent(new Event('resize'));
+
+// Handle orientation change
+window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 300);
+});
+
+// Prevent zoom on double tap for better UX
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, { passive: false });
+
+// Fix viewport height on mobile browsers
+function setViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+setViewportHeight();
+window.addEventListener('load', setViewportHeight);
+window.addEventListener('resize', setViewportHeight);
 
 // Performance optimization: Lazy load images
 if ('IntersectionObserver' in window) {

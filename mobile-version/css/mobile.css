@@ -7,6 +7,23 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Prevent horizontal scroll and ensure proper sizing */
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Ensure all elements stay within viewport */
+* {
+    max-width: 100%;
+}
+
 :root {
     --primary: #000000;
     --secondary: #333333;
@@ -16,19 +33,23 @@
     --bg-light: #f8f8f8;
     --shadow: 0 2px 10px rgba(0,0,0,0.1);
     --shadow-lg: 0 4px 20px rgba(0,0,0,0.15);
+    --vh: 1vh; /* Custom viewport height for mobile */
 }
 
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    overflow-x: hidden;
     padding-bottom: 80px; /* Space for fixed CTA */
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
 /* Mobile Header */
@@ -666,4 +687,337 @@ body {
 .review-card,
 .info-card {
     animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive Design - Media Queries */
+
+/* Extra Small Devices (< 360px) */
+@media screen and (max-width: 359px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .header-logo {
+        height: 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+    }
+    
+    .btn-primary {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    .quick-actions {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .action-card {
+        padding: 12px 3px;
+    }
+    
+    .action-card i {
+        font-size: 20px;
+    }
+    
+    .action-card span {
+        font-size: 11px;
+    }
+    
+    .service-item {
+        padding: 15px;
+    }
+    
+    .service-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    .service-info h3 {
+        font-size: 16px;
+    }
+    
+    .service-price {
+        font-size: 20px;
+    }
+}
+
+/* Small Devices (360px - 479px) */
+@media screen and (min-width: 360px) and (max-width: 479px) {
+    .header-content {
+        padding: 12px 15px;
+    }
+    
+    .hero-mobile {
+        padding: 35px 15px 50px;
+    }
+    
+    .quick-actions {
+        padding: 15px;
+        gap: 12px;
+    }
+}
+
+/* Medium Devices (480px - 767px) */
+@media screen and (min-width: 480px) {
+    .header-logo {
+        height: 60px;
+    }
+    
+    .hero-content h1 {
+        font-size: 42px;
+    }
+    
+    .hero-content p {
+        font-size: 20px;
+    }
+    
+    .quick-actions {
+        max-width: 480px;
+        margin: -30px auto 0;
+    }
+    
+    .services-mobile,
+    .gallery-mobile,
+    .reviews-mobile,
+    .contact-mobile {
+        padding: 50px 30px;
+    }
+    
+    .service-item {
+        padding: 25px;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+    }
+    
+    .service-info h3 {
+        font-size: 20px;
+    }
+    
+    .service-price {
+        font-size: 28px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .review-card {
+        flex: 0 0 70%;
+        padding: 30px;
+    }
+    
+    .rating-number {
+        font-size: 56px;
+    }
+}
+
+/* Large Devices / Small Tablets (768px+) */
+@media screen and (min-width: 768px) {
+    body {
+        padding-bottom: 0;
+    }
+    
+    .bottom-cta {
+        display: none;
+    }
+    
+    .hero-mobile {
+        padding: 60px 40px 80px;
+    }
+    
+    .hero-content h1 {
+        font-size: 52px;
+    }
+    
+    .hero-content p {
+        font-size: 22px;
+    }
+    
+    .quick-actions {
+        max-width: 600px;
+        margin: -40px auto 0;
+        gap: 20px;
+    }
+    
+    .action-card {
+        padding: 20px 10px;
+    }
+    
+    .action-card i {
+        font-size: 28px;
+    }
+    
+    .action-card span {
+        font-size: 14px;
+    }
+    
+    .services-mobile,
+    .gallery-mobile,
+    .reviews-mobile,
+    .contact-mobile {
+        padding: 60px 40px;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+    
+    .section-header h2 {
+        font-size: 32px;
+    }
+    
+    .services-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    .review-card {
+        flex: 0 0 45%;
+        padding: 35px;
+    }
+    
+    .map-container {
+        height: 350px;
+    }
+    
+    .footer-mobile {
+        padding: 40px;
+    }
+}
+
+/* Extra Large Devices / Tablets in Landscape (1024px+) */
+@media screen and (min-width: 1024px) {
+    .mobile-header {
+        display: none;
+    }
+    
+    .overlay {
+        display: none;
+    }
+    
+    /* Show a message to use desktop version */
+    body::before {
+        content: '💻 Para una mejor experiencia en pantallas grandes, usa la versión de escritorio';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #000 0%, #333 100%);
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 14px;
+        z-index: 10000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .hero-mobile {
+        margin-top: 50px;
+        padding: 80px 60px 100px;
+    }
+    
+    .services-mobile,
+    .gallery-mobile,
+    .reviews-mobile,
+    .contact-mobile {
+        max-width: 960px;
+        padding: 80px 60px;
+    }
+    
+    .services-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .review-card {
+        flex: 0 0 40%;
+    }
+}
+
+/* Landscape Orientation Adjustments */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .hero-mobile {
+        padding: 30px 20px 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-cta {
+        margin-top: 15px;
+    }
+    
+    .hero-badge {
+        display: none;
+    }
+}
+
+/* Fix for very wide mobile screens */
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .services-mobile,
+    .gallery-mobile,
+    .reviews-mobile,
+    .contact-mobile {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Ensure images don't overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent horizontal scroll */
+* {
+    max-width: 100%;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+    .bottom-cta {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-light: #1a1a1a;
+    }
 }
